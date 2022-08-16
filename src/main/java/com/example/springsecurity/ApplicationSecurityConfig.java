@@ -13,6 +13,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+// import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 
 import static com.example.springsecurity.ApplicationUserRole.*;
 // import static com.example.springsecurity.ApplicationUserPermission.*;
@@ -32,7 +33,9 @@ public class ApplicationSecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-                // .csrf().disable()
+                .csrf().disable()
+                // .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
+                // .and()
                 .authorizeRequests()
                 .antMatchers("/", "index", "/css/*", "/js/*").permitAll()
                 .antMatchers("/api/**").hasRole(STUDENT.name())
