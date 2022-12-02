@@ -44,7 +44,7 @@ public class StudentManagementController {
     @PreAuthorize("hasAuthority('student:write')")
     public void deleteStudent(@PathVariable("studentId") Integer studentId) {
         logger.info("deleteStudent");
-        logger.info("Deleted Student ID: ",studentId);
+        logger.info("Deleted Student ID: ", studentId);
     }
 
     @PutMapping(path = "{studentId}")
